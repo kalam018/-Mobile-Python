@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Mobile Accessories Shop</title>
+
+    <!-- Import Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* 🌐 Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* 🌈 Body & Background */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #74ebd5, #acb6e5);
+            overflow: hidden;
+        }
+
+        /* 🎨 Form Container */
+        form {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+            padding: 30px;
+            width: 350px;
+            text-align: center;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        /* 💫 Background Animation */
+        form::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 300%;
+            height: 300%;
+            background: radial-gradient(circle, #acb6e5, #86a8e7, #91eae4);
+            animation: rotate-bg 8s linear infinite;
+            z-index: -1;
+            opacity: 0.25;
+        }
+
+        @keyframes rotate-bg {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* 📝 Form Heading */
+        h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #74ebd5, #acb6e5);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* 📑 Form Labels */
+        label {
+            display: block;
+            font-weight: 600;
+            text-align: left;
+            margin: 12px 0 5px;
+            color: #ffffff;
+            opacity: 0.9;
+        }
+
+        /* 🔳 Input Fields */
+        input {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            outline: none;
+            font-size: 16px;
+            margin-bottom: 15px;
+            background: rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            transition: 0.3s ease;
+        }
+
+        input:focus {
+            background: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 🚀 Button */
+        button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(90deg, #00c6ff, #0072ff);
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 114, 255, 0.4);
+        }
+
+        button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 114, 255, 0.6);
+        }
+
+        /* 🔗 Links */
+        p {
+            margin-top: 15px;
+        }
+
+        a {
+            color: #ffdd57;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: #ffab00;
+            text-decoration: underline;
+        }
+
+        /* 🚦 Alert Messages */
+        .alert {
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 16px;
+            animation: slide-down 0.5s ease, fade-out 6s ease forwards;
+        }
+
+        /* ❌ Error Message */
+        .alert-error {
+            background: #e74c3c;
+            color: white;
+            border-left: 5px solid #c0392b;
+        }
+
+        /* ✅ Success Message */
+        .alert-success {
+            background: #2ecc71;
+            color: white;
+            border-left: 5px solid #27ae60;
+        }
+
+        /* 🌐 Slide Down Animation */
+        @keyframes slide-down {
+            0% { transform: translateY(-20px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        /* 🌫 Fade Out Animation */
+        @keyframes fade-out {
+            0%, 90% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <form method="POST">
+        <h1>Login</h1>
+
+        <!-- 🌟 Flash Messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <label>Username</label>
+        <input type="text" name="username" required>
+        
+        <label>Password</label>
+        <input type="password" name="password" required>
+        
+        <button type="submit">Login</button>
+
+        <p><a href="{{ url_for('signup') }}">Don't have an account? Signup here</a></p>
+    </form>
+</body>
+</html>

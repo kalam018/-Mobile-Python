@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Purchase Page - Mobile Accessories</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #6dd5ed, #2193b0);
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: white;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        /* Container */
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 800px;
+            width: 100%;
+        }
+
+        /* Product Section */
+        .product-card {
+            display: flex;
+            align-items: center;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        .product-card img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-right: 20px;
+        }
+
+        .product-info {
+            flex: 1;
+        }
+
+        .product-info h2 {
+            font-size: 1.8rem;
+            color: #2193b0;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin: 5px 0;
+            font-weight: 500;
+            color: #555;
+        }
+
+        /* Form Styles */
+        form {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+        }
+
+        label {
+            display: block;
+            font-weight: 500;
+            margin: 10px 0 5px;
+        }
+
+        input, textarea, select, button {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border 0.3s, box-shadow 0.3s;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            border-color: #2193b0;
+            box-shadow: 0px 4px 8px rgba(33, 147, 176, 0.2);
+            outline: none;
+        }
+
+        button {
+            background-color: #2193b0;
+            color: white;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        button:hover {
+            background-color: #1b7a99;
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Purchase Product: {{ product.name }}</h1>
+
+        <!-- Product Information -->
+        <div class="product-card">
+            <img src="{{ url_for('static', filename='upload/' + product.image) }}" alt="{{ product.name }}">
+            <div class="product-info">
+                <h2>{{ product.name }}</h2>
+                <p>Price: ${{ product.price }}</p>
+                <p>Category: {{ product.category }}</p>
+            </div>
+        </div>
+
+        <!-- Purchase Form -->
+        <form method="POST">
+            <label>Full Name</label>
+            <input type="text" name="full_name" value="{{ user.username }}" required>
+
+            <label>Mobile Number</label>
+            <input type="text" name="mobile_number" required>
+
+            <label>Email</label>
+            <input type="email" name="email" value="{{ user.email }}" required>
+
+            <label>Address</label>
+            <textarea name="address" required></textarea>
+
+            <label>Price</label>
+            <input type="text" name="price" value="{{ product.price }}" readonly>
+
+            <label>Payment Method</label>
+            <select name="payment_method" id="payment_method" onchange="togglePaymentFields()" required>
+                <option value="Credit Card">Credit Card</option>
+                <option value="Debit Card">Debit Card</option>
+                <option value="UPI">UPI</option>
+                <option value="Cash on Delivery">Cash on Delivery</option>
+            </select>
+
+            <div id="payment_details" style="display:none;">
+                <label>UPI ID</label>
+                <input type="text" name="payment_details" placeholder="Enter your UPI ID">
+            </div>
+
+            <button type="submit">Confirm Purchase</button>
+        </form>
+    </div>
+
+    <script>
+        function togglePaymentFields() {
+            const method = document.getElementById('payment_method').value;
+            document.getElementById('payment_details').style.display = method === 'UPI' ? 'block' : 'none';
+        }
+    </script>
+</body>
+</html>

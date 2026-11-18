@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>About Us - Mobile Accessories Shop</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #e3f2fd, #bbdefb);
+      color: #333;
+    }
+
+    .hero {
+      text-align: center;
+      background: url('static/images/gallery1.jpg') no-repeat center center/cover;
+      height: 60vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      position: relative;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      background-color: rgba(0, 0, 0, 0.5);
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .hero h1 {
+      position: relative;
+      z-index: 1;
+      font-size: 3rem;
+      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .section {
+      max-width: 1200px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+
+    .section h2 {
+      font-size: 2rem;
+      color: #0d47a1;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .section p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      margin-bottom: 30px;
+      text-align: justify;
+    }
+
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+    }
+
+    .feature-box {
+      flex: 1 1 300px;
+      background: white;
+      border-radius: 15px;
+      padding: 25px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: 0.3s ease;
+    }
+
+    .feature-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .feature-box img {
+      width: 80px;
+      margin-bottom: 15px;
+    }
+
+    .feature-box h3 {
+      color: #1e88e5;
+      margin-bottom: 10px;
+    }
+
+    .gallery {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 30px;
+    }
+
+    .gallery img {
+      width: 250px;
+      border-radius: 12px;
+      transition: 0.3s;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hero">
+    <h1>About Our Mobile Accessories Shop</h1>
+  </div>
+
+  <div class="section">
+    <h2>Our Story</h2>
+    <p>
+      We started with one simple idea: quality accessories should make your smartphone smarter.
+      From premium chargers and rugged cases to true wireless earbuds and power banks, we curate products
+      that blend performance, durability, and style—so you get more from every tap, scroll, and call.
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>Why Choose Us?</h2>
+    <div class="features">
+      <div class="feature-box">
+        <img src="static/images/gifbox.png" alt="Premium Accessories" />
+        <h3>Premium Accessories</h3>
+        <p>Reliable chargers, protective cases, crystal-clear screen guards, and more—tested for quality.</p>
+      </div>
+      <div class="feature-box">
+        <img src="static/images/sustainable.png" alt="Trusted Warranty" />
+        <h3>Trusted Warranty</h3>
+        <p>Peace of mind with assured replacements on eligible products.</p>
+      </div>
+      <div class="feature-box">
+        <img src="static/images/differentiation.png" alt="Latest Tech" />
+        <h3>Latest Tech & Trends</h3>
+        <p>Stay ahead with the newest Bluetooth audio, fast-charging standards, and smart wearables.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Gallery</h2>
+    <div class="gallery">
+      <img src="static/images/gallery2.jpg" alt="Accessories 1" />
+      <img src="static/images/gallery3.jpg" alt="Accessories 2" />
+      <img src="static/images/gallery4.jpg" alt="Accessories 3" />
+    </div>
+  </div>
+
+</body>
+</html>
